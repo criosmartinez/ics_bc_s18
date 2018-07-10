@@ -9,12 +9,41 @@ def english_number(number)
                   sixty seventy eighty ninety]
   teenagers = %w[eleven twelve thirteen
                  fourteen fifteen sixteen seventeen eighteen nineteen]
+
   # "left" is how much of the number
   # we still have left to write out.
   # "write" is the part we are
   # writing out right now.
   # write and left...get it? :)
   left = number
+write = left / 1000000000000 #How many trillions left?
+left -= write * 1000000000000 #Subtract off those trillions
+if write > 0
+  trillions = english_number write
+  num_string = num_string + trillions + ' trillion'
+  if left > 0
+    num_string = num_string + ' '
+  end
+end
+write = left / 1000000000 #How many billions left?
+left -= write * 1000000000 #Subtract off those billions
+if write > 0
+  billions = english_number write
+  num_string = num_string + billions + ' billion'
+  if left > 0
+    num_string = num_string + ' '
+  end
+end
+write = left / 1000 #How many thousands left?
+left -= write * 1000 #Subtract off those thousands
+if write > 0
+  thousands = english_number write
+  num_string = num_string + thousands + ' thousand'
+  if left > 0
+    num_string = num_string + ' '
+  end
+end
+
   write = left / 100 # How many hundreds left?
   left -= write * 100 # Subtract off those hundreds.
   if write > 0

@@ -3,7 +3,7 @@
 ###
 ### An example for mac could be '/Users/username/Desktop/pic_dst'
 ### An example for PC could be 'C:/Users/username/Desktop/pic_dst'
-Dir.chdir '<destination>'
+Dir.chdir 'C:/dev/new_pictures'
 
 # First we find all of the pictures to be moved.
 ### In the next line you want the source
@@ -12,7 +12,7 @@ Dir.chdir '<destination>'
 ###
 ### An example for mac could be '/Users/username/Desktop/pic_src/**/*.{JPG,jpg}'
 ### An example for PC could be 'C:/Users/username/Desktop/pic_src/**/*.{JPG,jpg}'
-pic_names = Dir['<source>']
+pic_names = Dir['C:/dev/pictures/**/*.{JPG, jpg}']
 
 puts 'What would you like to call this batch?'
 batch_name = gets.chomp
@@ -28,10 +28,16 @@ pic_names.each do |name|
   else
     "#{batch_name}#{pic_number}.jpg"
   end
-
   # Now where were we? Oh, yeah...
-  File.rename name, new_name
+  if File.exist? (new_name)
+    puts 'The file ' + new_name + ' already exists. Do you want to continue? (Yes or No)'
+    continue_answer = gets.chomp
+    if continue_answer == 'No'
+      exit
+    end
+  end
   # Finally, we increment the counter.
+  File.rename name, new_name
   pic_number += 1
 end
 puts # This is so we aren't on progress bar line.

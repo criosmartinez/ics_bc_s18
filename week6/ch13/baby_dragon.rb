@@ -103,3 +103,19 @@ class Dragon
 end
 
 # Make it interactive!
+puts 'What is the name of your baby dragon?'
+dragon_name = gets.chomp
+baby_dragon = Dragon.new(dragon_name)
+while true
+  print '(F)eed, (W)alk, (T)oss, (R)ock, (P)ut to bed, (Q)uit :'
+  key_pressed = gets.chomp
+  case key_pressed.upcase
+    when 'F' then baby_dragon.feed
+	when 'W' then baby_dragon.walk
+	when 'P' then baby_dragon.put_to_bed
+	when 'T' then baby_dragon.toss
+	when 'R' then baby_dragon.rock
+	when 'Q' then exit
+  end  
+end
+

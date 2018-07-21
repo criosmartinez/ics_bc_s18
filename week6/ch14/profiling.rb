@@ -4,3 +4,11 @@ def profile block_description, &block
   duration = Time.new - start_time
   puts "#{block_description}: #{duration} seconds"
 end
+
+profile 'test' do
+  number = 0
+  50_000.times do
+    number = number + 1
+  end
+  puts number
+end

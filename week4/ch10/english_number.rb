@@ -16,8 +16,8 @@ def english_number(number)
   # writing out right now.
   # write and left...get it? :)
   left = number
-write = left / 1000000000000 #How many trillions left?
-left -= write * 1000000000000 #Subtract off those trillions
+write = left / 1e12 #How many trillions left?
+left -= write * 1e12 #Subtract off those trillions
 if write > 0
   trillions = english_number write
   num_string = num_string + trillions + ' trillion'
@@ -25,8 +25,8 @@ if write > 0
     num_string = num_string + ' '
   end
 end
-write = left / 1000000000 #How many billions left?
-left -= write * 1000000000 #Subtract off those billions
+write = left / 1e9 #How many billions left?
+left -= write * 1e9 #Subtract off those billions
 if write > 0
   billions = english_number write
   num_string = num_string + billions + ' billion'
